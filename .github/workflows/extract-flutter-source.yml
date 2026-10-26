@@ -1,0 +1,74 @@
+name: Extract Flutter source
+
+on:
+  push:
+    branches:
+      - pet/dev
+    paths:
+      - ".github/workflows/extract-flutter-source.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: pet/dev
+          fetch-depth: 0
+
+      - name: Show archive information
+        run: |
+          set -euo pipefail
+          ls -lah populationistic
+          file populationistic/v1.1-beta.3.zip
+          unzip -l populationistic/v1.1-beta.3.zip | head -100
+
+      - name: Extract archive
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/playtorrio-source
+          mkdir -p /tmp/playtorrio-source
+          unzip -q populationistic/v1.1-beta.3.zip -d /tmp/playtorrio-source
+
+          echo "Extracted archive contents:"
+          find /tmp/playtorrio-source -maxdepth 3 -type f | head -100
+
+          # Locate the directory containing pubspec.yaml.
+          PUBSPEC=$(find /tmp/playtorrio-source -type f -name pubspec.yaml | head -n 1)
+          if [ -z "$PUBSPEC" ]; then
+            echo "No pubspec.yaml found in archive." >&2
+            exit 1
+          fi
+
+          PROJECT_DIR=$(dirname "$PUBSPEC")
+          echo "Detected Flutter project directory: $PROJECT_DIR"
+
+          # Copy project contents to repository root, preserving hidden files.
+          shopt -s dotglob
+          cp -a "$PROJECT_DIR"/. ./
+
+          # Remove the source archive after successful extraction.
+          rm -f populationistic/v1.1-beta.3.zip
+
+      - name: Verify Flutter project layout
+        run: |
+          set -euo pipefail
+          test -f pubspec.yaml
+          test -d lib
+          test -d android
+          echo "Flutter project layout verified."
+          find . -maxdepth 2 -type d | sort | head -100
+
+      - name: Commit extracted source
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: extract Flutter source from bundled archive" || echo "Nothing to commit"
+          git push origin pet/dev
